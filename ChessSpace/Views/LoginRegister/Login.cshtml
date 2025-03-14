@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Login Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div style="position: absolute; top: 20px; left: 20px;">
+        <a href="@Url.Action("Index", "Home")" class="text-properties red-button">Go Back</a>
+    </div>
+
+    <div style="text-align: center; padding-top: 50px;">
+        <h2 class="text-properties">Login to Your Account</h2>
+
+        <form method="post" action="@Url.Action("Login", "LoginRegister")">
+            <div style="margin-bottom: 15px;">
+                <label class="text-properties" for="email">Email:</label>
+                <input class="purple-input text-properties" type="email" id="email" name="email" required placeholder="Enter your email" />
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label class="text-properties" for="password">Password:</label>
+                <input class="purple-input text-properties" type="password" id="password" name="password" required placeholder="Enter your password" />
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button type="submit" class="green-button text-properties">Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
