@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=chessspace.db"));
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -16,6 +17,7 @@ if (!app.Environment.IsDevelopment()) {
     app.UseHsts();
 }
 
+app.MapHub<ChessHub>("/ChessHub");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

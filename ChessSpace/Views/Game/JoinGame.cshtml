@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Join Game";
+}
+
+<h2>Voer een gamecode in</h2>
+
+@if (ViewBag.Error != null) {
+    <p class="text-danger">@ViewBag.Error</p>
+}
+
+<form method="post" asp-controller="Game" asp-action="JoinGame">
+    <input type="text" name="gameCode" class="form-control" placeholder="Gamecode" required />
+    <button type="submit" class="btn btn-success mt-2">Join</button>
+</form>

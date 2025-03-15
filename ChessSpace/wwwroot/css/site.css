@@ -107,3 +107,34 @@ red-button:hover {
     font-family: 'Jaro', sans-serif;
     color: white;
 }
+.chessboard {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.tablechess {
+    border-collapse: collapse;
+    width: 320px; /* Pas de breedte aan indien nodig */
+    height: 320px; /* Pas de hoogte aan indien nodig */
+}
+
+
+
+.black {
+    background-color: #000;
+    width: 40px; /* De breedte van elke cel */
+    height: 40px; /* De hoogte van elke cel */
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #000; /* Voeg een rand toe om de cellen zichtbaar te maken */
+}
+
+.white {
+    background-color: #fff;
+    width: 40px; /* De breedte van elke cel */
+    height: 40px; /* De hoogte van elke cel */
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #000; /* Voeg een rand toe om de cellen zichtbaar te maken */
+}
