@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 public class Game {
     [Key]
@@ -9,4 +8,5 @@ public class Game {
     public string GameCode { get; set; }
 
     public DateTime CreatedAt { get; set; }
+
 }

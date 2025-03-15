@@ -15,7 +15,7 @@ public class GameController : Controller {
         _context.Games.Add(game);
         _context.SaveChanges();
 
-        return View("GameLobby", game);
+        return RedirectToAction("GameLobby", new { gameCode = game.GameCode });
     }
 
 
