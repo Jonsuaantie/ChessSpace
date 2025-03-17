@@ -29,7 +29,7 @@ body {
     gap: 10px;
 }
 
-.coolbutton {
+button {
     border-radius: 50px;
     padding: 10px;
     cursor: pointer;
@@ -121,38 +121,33 @@ red-button:hover {
         position: relative;
     }
 
-.tablechess button {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    display: block;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+.white {
+    width: 40px; /* De breedte van elke cel */
+    height: 40px; /* De hoogte van elke cel */
+    text-align: center;
+    vertical-align: middle;
+    background-color: #00F0C2;
+    border: 10px solid #2E937F;
 }
 
-
-
+.white:hover {
+    background-color: #00b78f;
+}
 
 .black {
-    background-color: #000;
     width: 40px; /* De breedte van elke cel */
     height: 40px; /* De hoogte van elke cel */
     text-align: center;
     vertical-align: middle;
-    border: 1px solid #000; /* Voeg een rand toe om de cellen zichtbaar te maken */
+    background-color: #C307FF;
+    border: 10px solid #842AA1;
 }
 
-.white {
-    background-color: #fff;
-    width: 40px; /* De breedte van elke cel */
-    height: 40px; /* De hoogte van elke cel */
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid #000; /* Voeg een rand toe om de cellen zichtbaar te maken */
+
+.black:hover {
+    background-color: #a505d1;
 }
+
 .bluepawn {
     background-image: url('../images/bluepawn.png');
     background-size: cover;
@@ -164,8 +159,11 @@ red-button:hover {
     background-size: cover;
     background-position: center;
 }
-.chessbutton{
-    width: 37px;
-    height: 37px;
-
+.chessbutton {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: block;
 }

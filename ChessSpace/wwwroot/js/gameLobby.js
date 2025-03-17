@@ -4,45 +4,72 @@
 
 connection.start().then(() => {
     console.log("Connected to SignalR!");
+    joinGame(gamecode);
 }).catch(err => console.error(err));
+
+window.onload = function () {
+    let gamecodeElement = document.getElementById("gamecode");
+    if (gamecodeElement) {
+        gamecode = gamecodeElement.innerText.trim();
+        joinGame(gamecode);
+    } else {
+        console.error("Gamecode-element niet gevonden!");
+    }
+};
 
 connection.on("ReceiveMessage", (message) => {
     console.log("Bericht ontvangen:", message);
     document.getElementById("messages").innerHTML += `<p>${message}</p>`;
 });
-let selectedpiece = null;
+connection.on("UpdateBoard", (updatedBoardHtml) => {
+    document.getElementById("chessboard").innerHTML = updatedBoardHtml;
+});
+let gamecode = document.getElementById('gamecode').innerText;
+
 function sendMessage() {
     let msg = document.getElementById("msgInput").value;
-    connection.invoke("SendMessage", msg);
+    connection.invoke("SendMessage", msg, gamecode);
 }
 
-let selectedPawn = null;  // Houdt de geselecteerde pion bij
+let selectedPawn = null;
+let selectedpawncell = null;
 
 function movePawn(event) {
-    const clickedButton = event.target;  // Het aangeklikte element (de button)
-    const clickedCell = clickedButton.parentNode;  // De cel (td) van de aangeklikte knop
+    const clickedButton = event.target;
+    const clickedCell = clickedButton.parentNode;
 
     if (selectedPawn === null) {
-        // Als er geen pion is geselecteerd, selecteer dan de aangeklikte pion
         if (clickedButton.classList.contains('orangepawn') || clickedButton.classList.contains('bluepawn')) {
             selectedPawn = clickedButton;
-            clickedButton.style.border = '2px solid red';  // Markeer geselecteerde pion
+            selectedpawncell = clickedCell;
+
+            clickedButton.style.border = '2px solid red';
             console.log('Pion geselecteerd:', clickedButton.id);
         }
     } else {
-        // Als er al een pion geselecteerd is, verplaats de pion naar de nieuwe plek
-        if (clickedCell && (clickedCell.classList.contains('white') || clickedCell.classList.contains('black'))) {
-            // Verwijder de pion uit de oorspronkelijke cel
-            selectedPawn.parentNode.innerHTML = '';
+        if (clickedCell && !(clickedButton.classList.contains('orangepawn') || clickedButton.classList.contains('bluepawn'))) {
 
-            // Voeg de pion toe aan de nieuwe cel
-            clickedCell.innerHTML = '';  // Zorg ervoor dat de cel leeg is
-            clickedCell.appendChild(selectedPawn);
+            clickedCell.innerHTML = '';
+            let temppawn = selectedPawn;
+            temppawn.style.border = '';
+            clickedCell.appendChild(temppawn);
+            selectedpawncell.innerHTML = `<button class="chessbutton" onclick="movePawn(event)"></button>`
 
-            selectedPawn.style.border = '';  // Verwijder de selectie markering
+
+            
             console.log('Pion verplaatst naar:', clickedCell.id);
-            selectedPawn = null;  // Reset de geselecteerde pion
+
+            let updatedBoardHtml = document.getElementById('chessboard').innerHTML;
+
+            connection.invoke("MovePiece", updatedBoardHtml, gamecode);
+
+            selectedPawn = null;
+            selectedpawncell = null;
         }
     }
 }
+function joinGame(gamecode) {
+    connection.invoke("JoinGame", gamecode);
+}
+
 
