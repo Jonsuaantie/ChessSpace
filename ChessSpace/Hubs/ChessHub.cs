@@ -23,7 +23,7 @@ public class ChessHub : Hub {
         game.CurrentPlayer = game.CurrentPlayer == "Player1" ? "Player2" : "Player1";
         _context.SaveChanges();
 
-        // Verstuur de zet naar de andere speler
+        // Verstuur de zet naar de andere speler in dezelfde gamegroep
         await Clients.Group(gameCode).SendAsync("PieceMoved", fromCell, toCell);
     }
 

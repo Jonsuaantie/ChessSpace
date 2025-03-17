@@ -16,33 +16,33 @@ function sendMessage() {
     connection.invoke("SendMessage", msg);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    let selectedButton = null;
+let selectedPawn = null;  // Houdt de geselecteerde pion bij
 
-    document.querySelectorAll(".chessbutton").forEach(button => {
-        button.addEventListener("click", function () {
-            let currentImage = this.style.backgroundImage;
+function movePawn(event) {
+    const clickedButton = event.target;  // Het aangeklikte element (de button)
+    const clickedCell = clickedButton.parentNode;  // De cel (td) van de aangeklikte knop
 
-            if (selectedButton === null) {
-                // Eerste klik: Selecteer pion als er een afbeelding op staat
-                if (currentImage && currentImage !== "none") {
-                    selectedButton = this;
-                    this.style.border = "2px solid red"; // Markeer geselecteerde pion
-                }
-            } else {
-                // Tweede klik: Verplaats de pion
-                if (!this.style.backgroundImage || this.style.backgroundImage === "none") {
-                    this.style.backgroundImage = selectedButton.style.backgroundImage;
-                    selectedButton.style.backgroundImage = ""; // Verwijder afbeelding van de oude plek
-                    selectedButton.style.border = "none"; // Reset de border
-                    selectedButton = null; // Reset selectie
-                } else {
-                    // Klikt op een andere pion, dan wordt de selectie gewijzigd
-                    selectedButton.style.border = "none"; // Haal de rode rand weg
-                    selectedButton = this;
-                    this.style.border = "2px solid red"; // Nieuwe selectie
-                }
-            }
-        });
-    });
-});
+    if (selectedPawn === null) {
+        // Als er geen pion is geselecteerd, selecteer dan de aangeklikte pion
+        if (clickedButton.classList.contains('orangepawn') || clickedButton.classList.contains('bluepawn')) {
+            selectedPawn = clickedButton;
+            clickedButton.style.border = '2px solid red';  // Markeer geselecteerde pion
+            console.log('Pion geselecteerd:', clickedButton.id);
+        }
+    } else {
+        // Als er al een pion geselecteerd is, verplaats de pion naar de nieuwe plek
+        if (clickedCell && (clickedCell.classList.contains('white') || clickedCell.classList.contains('black'))) {
+            // Verwijder de pion uit de oorspronkelijke cel
+            selectedPawn.parentNode.innerHTML = '';
+
+            // Voeg de pion toe aan de nieuwe cel
+            clickedCell.innerHTML = '';  // Zorg ervoor dat de cel leeg is
+            clickedCell.appendChild(selectedPawn);
+
+            selectedPawn.style.border = '';  // Verwijder de selectie markering
+            console.log('Pion verplaatst naar:', clickedCell.id);
+            selectedPawn = null;  // Reset de geselecteerde pion
+        }
+    }
+}
+
