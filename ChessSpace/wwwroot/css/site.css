@@ -108,7 +108,7 @@ red-button:hover {
     color: white;
 }
 .tablechess {
-    border-collapse: collapse;
+    border-collapse: separate;
     width: 400px; /* Pas dit aan naar wens */
     height: 400px;
 }
@@ -122,12 +122,13 @@ red-button:hover {
     }
 
 .white {
-    width: 40px; /* De breedte van elke cel */
-    height: 40px; /* De hoogte van elke cel */
-    text-align: center;
     vertical-align: middle;
     background-color: #00F0C2;
-    border: 10px solid #2E937F;
+    border: 7px solid #2E937F;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
 }
 
 .white:hover {
@@ -135,12 +136,13 @@ red-button:hover {
 }
 
 .black {
-    width: 40px; /* De breedte van elke cel */
-    height: 40px; /* De hoogte van elke cel */
-    text-align: center;
     vertical-align: middle;
     background-color: #C307FF;
-    border: 10px solid #842AA1;
+    border: 7px solid #842AA1;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
 }
 
 
