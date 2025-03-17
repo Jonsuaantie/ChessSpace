@@ -29,7 +29,7 @@ body {
     gap: 10px;
 }
 
-button {
+.coolbutton {
     border-radius: 50px;
     padding: 10px;
     cursor: pointer;
@@ -107,17 +107,32 @@ red-button:hover {
     font-family: 'Jaro', sans-serif;
     color: white;
 }
-.chessboard {
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-}
-
 .tablechess {
     border-collapse: collapse;
-    width: 320px; /* Pas de breedte aan indien nodig */
-    height: 320px; /* Pas de hoogte aan indien nodig */
+    width: 400px; /* Pas dit aan naar wens */
+    height: 400px;
 }
+
+    .tablechess td {
+        width: 12.5%; /* 1/8 van de totale breedte */
+        height: 12.5%; /* Schaalbare hoogte */
+        aspect-ratio: 1/1; /* Zorgt ervoor dat cellen vierkant blijven */
+        padding: 0;
+        position: relative;
+    }
+
+.tablechess button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 
 
 
@@ -137,4 +152,20 @@ red-button:hover {
     text-align: center;
     vertical-align: middle;
     border: 1px solid #000; /* Voeg een rand toe om de cellen zichtbaar te maken */
+}
+.bluepawn {
+    background-image: url('../images/bluepawn.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.orangepawn {
+    background-image: url('../images/orangepawn.png');
+    background-size: cover;
+    background-position: center;
+}
+.chessbutton{
+    width: 37px;
+    height: 37px;
+
 }
