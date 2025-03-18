@@ -111,9 +111,8 @@ red-button:hover {
     border-collapse: separate;
     width: 528px; /* Pas dit aan naar wens */
     height: 528px;
-    background-color: rgba(0, 0, 0, 0.58);
-    border: 2   0px solid #D1D1D1;
-    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 20px;
     box-shadow: 0 0 10px 18px rgba(0, 0, 0, 0.65);
 }
 
@@ -123,6 +122,7 @@ red-button:hover {
         aspect-ratio: 1/1; /* Zorgt ervoor dat cellen vierkant blijven */
         padding: 0;
         position: relative;
+        box-sizing: border-box;
     }
 
 .white {
@@ -161,6 +161,8 @@ red-button:hover {
     background-color: transparent;
     cursor: pointer;
     display: block;
+    border-radius: 12px;
+    box-sizing: border-box;
 }
 
 .messages-container {

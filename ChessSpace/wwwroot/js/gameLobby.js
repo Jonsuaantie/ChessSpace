@@ -31,40 +31,44 @@ function sendMessage() {
     connection.invoke("SendMessage", msg, gamecode);
 }
 
-let selectedPawn = null;
-let selectedpawncell = null;
+let selectedPiece = null;
+let selectedpiececell = null;
 
 function movePawn(event) {
     const clickedButton = event.target;
     const clickedCell = clickedButton.parentNode;
-
-    if (selectedPawn === null) {
-        if (clickedButton.classList.contains('orangepawn') || clickedButton.classList.contains('bluepawn')) {
-            selectedPawn = clickedButton;
-            selectedpawncell = clickedCell;
+    const pieceClasses = [
+        'bluepawn', 'orangepawn', 'blueking', 'orangeking',
+        'bluequeen', 'orangequeen', 'bluerook', 'orangerook',
+        'blueknight', 'orangeknight', 'bluebishop', 'orangebishop'
+    ];
+    if (selectedPiece === null) {
+        if (pieceClasses.some(cls => clickedButton.classList.contains(cls))) {
+            selectedPiece = clickedButton;
+            selectedpiececell = clickedCell;
 
             clickedButton.style.border = '2px solid red';
             console.log('Pion geselecteerd:', clickedButton.id);
         }
     } else {
-        if (clickedCell && !(clickedButton.classList.contains('orangepawn') || clickedButton.classList.contains('bluepawn'))) {
+        if (clickedCell && !(pieceClasses.some(cls => clickedButton.classList.contains(cls)))) {
 
             clickedCell.innerHTML = '';
-            let temppawn = selectedPawn;
-            temppawn.style.border = '';
-            clickedCell.appendChild(temppawn);
-            selectedpawncell.innerHTML = `<button class="chessbutton" onclick="movePawn(event)"></button>`
+            let temppiece = selectedPiece;
+            temppiece.style.border = '';
+            clickedCell.appendChild(temppiece);
+            selectedpiececell.innerHTML = `<button class="chessbutton" onclick="movePawn(event)"></button>`
 
 
             
-            console.log('Pion verplaatst naar:', clickedCell.id);
+            console.log('Piece moved to:', clickedCell.id);
 
             let updatedBoardHtml = document.getElementById('chessboard').innerHTML;
 
             connection.invoke("MovePiece", updatedBoardHtml, gamecode);
 
-            selectedPawn = null;
-            selectedpawncell = null;
+            selectedPiece = null;
+            selectedpiececell = null;
         }
     }
 }

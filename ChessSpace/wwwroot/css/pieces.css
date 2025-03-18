@@ -48,24 +48,26 @@
 
 .blueknight {
     background-image: url('../images/BlueKnight.png');
-    background-size: cover;
+    background-size: 42px;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .orangeknight {
     background-image: url('../images/OrangeKnight.png');
-    background-size: cover;
+    background-size: 42px;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bluebishop {
     background-image: url('../images/BlueBishop.png');
-    background-size: cover;
+    background-size: 56px;
     background-position: center;
 }
 
 .orangebishop {
     background-image: url('../images/OrangeBishop.png');
-    background-size: cover;
+    background-size: 56px;
     background-position: center;
 }
