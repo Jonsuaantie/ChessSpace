@@ -109,8 +109,12 @@ red-button:hover {
 }
 .tablechess {
     border-collapse: separate;
-    width: 400px; /* Pas dit aan naar wens */
-    height: 400px;
+    width: 528px; /* Pas dit aan naar wens */
+    height: 528px;
+    background-color: rgba(0, 0, 0, 0.58);
+    border: 2   0px solid #D1D1D1;
+    border-radius: 50px;
+    box-shadow: 0 0 10px 18px rgba(0, 0, 0, 0.65);
 }
 
     .tablechess td {
@@ -150,17 +154,6 @@ red-button:hover {
     background-color: #a505d1;
 }
 
-.bluepawn {
-    background-image: url('../images/bluepawn.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.orangepawn {
-    background-image: url('../images/orangepawn.png');
-    background-size: cover;
-    background-position: center;
-}
 .chessbutton {
     width: 100%;
     height: 100%;
@@ -168,4 +161,50 @@ red-button:hover {
     background-color: transparent;
     cursor: pointer;
     display: block;
+}
+
+.messages-container {
+    position: absolute;
+    right: 20px;
+    top: 10%;
+    width: 250px;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.5); /* Transparante achtergrond */
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Jaro', sans-serif;
+    color: white;
+}
+
+.messages-container input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-family: 'Jaro', sans-serif;
+}
+
+.messages-container button {
+    background: cyan;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Jaro', sans-serif;
+    font-weight: bold;
+}
+
+.chessboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Hoogte volledig scherm */
+}
+.left-top-corner {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 10px; /* Optioneel: ruimte aan de randen */
+
 }
