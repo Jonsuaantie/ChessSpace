@@ -47,7 +47,7 @@ function movePawn(event) {
             selectedPiece = clickedButton;
             selectedpiececell = clickedCell;
 
-            clickedButton.style.border = '2px solid red';
+            clickedButton.style.outline = '2px solid red';
             console.log('Pion geselecteerd:', clickedButton.id);
         }
     } else {
@@ -55,7 +55,7 @@ function movePawn(event) {
 
             clickedCell.innerHTML = '';
             let temppiece = selectedPiece;
-            temppiece.style.border = '';
+            temppiece.style.outline = '';
             clickedCell.appendChild(temppiece);
             selectedpiececell.innerHTML = `<button class="chessbutton" onclick="movePawn(event)"></button>`
 
