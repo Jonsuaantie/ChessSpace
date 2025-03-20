@@ -19,6 +19,12 @@ namespace ChessSpace.Controllers {
         [HttpPost]
         public IActionResult Register(Player player) {
             if (ModelState.IsValid) {
+                // Check if email already exists
+                if (_context.Players.Any(p => p.Email == player.Email)) {
+                    ModelState.AddModelError("Email", "An account with this email already exists.");
+                    return View(player);
+                }
+
                 // Generate verification code
                 int verificationCode = new Random().Next(100000, 999999);
                 TempData["VerificationCode"] = verificationCode;
@@ -43,11 +49,11 @@ namespace ChessSpace.Controllers {
                         smtp.Send(email);
                         smtp.Disconnect(true);
                     }
-                    TempData["Notification"] = "A verification email has been sent to your email address.";
+                    TempData["Notification"] = "⚠️A verification email has been sent to your email address.";
                 }
                 catch (Exception ex) {
                     Console.WriteLine($"Error sending email: {ex.Message}");
-                    TempData["Notification"] = "Failed to send verification email. Please try again.";
+                    TempData["Notification"] = "⚠️Failed to send verification email. Please try again.";
                 }
 
                 return RedirectToAction("VerifyCode");
@@ -62,28 +68,23 @@ namespace ChessSpace.Controllers {
         int verificationcode;
 
         [HttpPost]
-        public IActionResult VerifyCode(int code)
-        {
-            if (TempData["VerificationCode"] != null)
-            {
+        public IActionResult VerifyCode(int code) {
+            if (TempData["VerificationCode"] != null) {
                 int verificationCode = (int)TempData["VerificationCode"];
-                if (code == verificationCode)
-                {
+                if (code == verificationCode) {
                     var playerJson = TempData["Player"] as string;
                     var player = JsonConvert.DeserializeObject<Player>(playerJson);
-                    if (player != null)
-                    {
+                    if (player != null) {
                         _context.Players.Add(player);
                         _context.SaveChanges();
-                        TempData["Notification"] = "Your account has been successfully registered.";
+                        TempData["Notification"] = "⚠️Your account has been successfully registered.";
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                ViewBag.Error = "Invalid verification code!";
+                TempData["Notification"] = "⚠️Invalid verification code!";
             }
-            else
-            {
-                ViewBag.Error = "Verification code is missing!";
+            else {
+                TempData["Notification"] = "⚠️Verification code is missing!";
             }
 
             TempData.Keep("VerificationCode");
