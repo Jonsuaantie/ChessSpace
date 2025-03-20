@@ -20,11 +20,14 @@
         <form class="form-container" asp-controller="LoginRegister" asp-action="Register" method="post" novalidate>
             <div class="register-container">
                 <input type="hidden" name="Source" value="Register" />
-                <input asp-for="UserName" name="UserName" type="text" class="purple-input margin-bottom height" placeholder="What should we call you?">
+                <label class="text-properties">Username:</label>
+                <input asp-for="UserName" name="UserName" type="text" class="purple-input margin-bottom height text-properties" placeholder="What should we call you?">
                 <span asp-validation-for="UserName"></span>
-                <input asp-for="Email" name="Email" type="email" class="purple-input margin-bottom height" placeholder="What is your E-mail?">
+                <label class="text-properties">Email:</label>
+                <input asp-for="Email" name="Email" type="email" class="purple-input margin-bottom height text-properties" placeholder="What is your E-mail?">
                 <span asp-validation-for="Email"></span>
-                <input asp-for="Password" name="Password" type="password" class="purple-input margin-bottom height" placeholder="Create a Password">
+                <label class="text-properties">Password:</label>
+                <input asp-for="Password" name="Password" type="password" class="purple-input height text-properties" placeholder="Create a Password">
                 <span asp-validation-for="Password"></span>
                 <button type="submit" class="green-button margin-bottom text-properties px20">Continue</button>
             </div>

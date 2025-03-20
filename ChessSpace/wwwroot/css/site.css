@@ -76,6 +76,21 @@ button {
     text-align: center;
 }
 
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #B02A2A; /* Fill color */
+    color: white;
+    font-family: 'Jaro', sans-serif;
+    padding: 15px;
+    border: 10px solid #FF0000; /* Border color */
+    border-radius: 50px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
 .green-button {
     background-color: #00F0C2;
     border: 10px solid #2E937F;

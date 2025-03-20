@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Verify Code";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
+    <link rel="stylesheet" href="~/css/site.css?v=4" asp-append-version="true">
+</head>
+<body>
+    @if (TempData["Notification"] != null) {
+        <div class="notification">
+            @TempData["Notification"]
+        </div>
+    }
+    <div class="container">
+        <div class="text-container">
+            <h1 class="px40 text-properties">Enter your verification code</h1>
+        </div>
+        <form class="form-container" asp-controller="LoginRegister" asp-action="VerifyCode" method="post" novalidate>
+            <div class="register-container">
+                <label class="text-properties">Verification Code:</label>
+                <input type="text" name="code" class="purple-input margin-bottom height text-properties" placeholder="Enter the code sent to your email" required>
+                <span asp-validation-for="code"></span>
+                <button type="submit" class="green-button margin-bottom text-properties px20">Verify</button>
+            </div>
+        </form>
+        @if (ViewBag.Error != null) {
+            <p class="text-properties px35">@ViewBag.Error</p>
+        }
+    </div>
+</body>
+</html>
