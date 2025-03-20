@@ -58,19 +58,21 @@ namespace ChessSpace.Controllers {
         public IActionResult VerifyCode() {
             return View();
         }
+
         int verificationcode;
+
         [HttpPost]
-        public IActionResult VerifyCode(int code) {
-            if (TempData["VerificationCode"] != null) {
-                bool wrongattempt = false;
-                if (wrongattempt == false) {
-                    int verificationcode = (int)TempData["VerificationCode"];
-                    wrongattempt = true;
-                }
-                if (code == verificationcode) {
+        public IActionResult VerifyCode(int code)
+        {
+            if (TempData["VerificationCode"] != null)
+            {
+                int verificationCode = (int)TempData["VerificationCode"];
+                if (code == verificationCode)
+                {
                     var playerJson = TempData["Player"] as string;
                     var player = JsonConvert.DeserializeObject<Player>(playerJson);
-                    if (player != null) {
+                    if (player != null)
+                    {
                         _context.Players.Add(player);
                         _context.SaveChanges();
                         TempData["Notification"] = "Your account has been successfully registered.";
@@ -79,9 +81,14 @@ namespace ChessSpace.Controllers {
                 }
                 ViewBag.Error = "Invalid verification code!";
             }
-            else {
+            else
+            {
                 ViewBag.Error = "Verification code is missing!";
             }
+
+            TempData.Keep("VerificationCode");
+            TempData.Keep("Player");
+
             return View();
         }
     }
