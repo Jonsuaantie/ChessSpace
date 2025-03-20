@@ -1,14 +1,31 @@
 ﻿@{
     ViewData["Title"] = "Join Game";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
+    <link rel="stylesheet" href="~/css/site.css?v=4" asp-append-version="true">
+</head>
+<body>
+    <div class="container justcenter">
+        <div class="form-container">
+            <h2 class="text-properties px40">Voer een gamecode in</h2>
 
-<h2>Voer een gamecode in</h2>
+            @if (ViewBag.Error != null) {
+                <p class="text-properties px35">@ViewBag.Error</p>
+            }
 
-@if (ViewBag.Error != null) {
-    <p class="text-danger">@ViewBag.Error</p>
-}
-
-<form method="post" asp-controller="Game" asp-action="JoinGame">
-    <input type="text" name="gameCode" class="form-control" placeholder="Gamecode" required />
-    <button type="submit" class="btn btn-success mt-2">Join</button>
-</form>
+            <form method="post" asp-controller="Game" asp-action="JoinGame">
+                <input type="text" name="gameCode" class="purple-input text-properties joingameinput" placeholder="Gamecode" required />
+                <div class="alignright">
+                    <button type="submit" class="green-button text-properties joinbutton">Join</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

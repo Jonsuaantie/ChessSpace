@@ -16,6 +16,20 @@ body {
     flex-direction: column; 
 }
 
+.justcenter {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.65);
+    max-width: 400px;
+    width: 100%;
+}
+
 .text-container {
     width: 80%;
     text-align: center;
@@ -208,5 +222,26 @@ red-button:hover {
     top: -40px;
     left: 0;
     padding: 10px; /* Optioneel: ruimte aan de randen */
+}
 
+.joingameinput {
+    min-height: 30px;
+    width: 60%;
+}
+
+.joingameinput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 10px;
+    text-align: center;
+    font-size: 17px;
+}  
+.alignright{
+    display: flex;
+    justify-content: center;
+}
+
+.joinbutton {
+    width: 100px;
+    font-size: 24px;
+    margin-top: 5px;
 }

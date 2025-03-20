@@ -18,12 +18,18 @@ public class GameController : Controller {
         return RedirectToAction("GameLobby", new { gameCode = game.GameCode });
     }
 
+    [HttpGet]
+    public IActionResult JoinGame() {
+        return View();
+    }
 
+    [HttpPost]
     public IActionResult JoinGame(string gameCode) {
         var game = _context.Games.FirstOrDefault(g => g.GameCode == gameCode);
+
         if (game == null) {
             ViewBag.Error = "Game not found!";
-            return View("JoinGame");
+            return View();
         }
 
         return RedirectToAction("GameLobby", new { gameCode = game.GameCode });
