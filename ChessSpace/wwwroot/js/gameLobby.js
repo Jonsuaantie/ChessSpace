@@ -79,7 +79,7 @@ function movePawn(event) {
 
             if ((selectedIsBlue && targetIsBlue) || (!selectedIsBlue && !targetIsBlue)) {
                 console.log('Illegale zet: je kunt niet op een stuk van je eigen kleur staan.');
-                return; // Stop de functie als de zet illegaal is
+                return;
             }
         }
         clickedCell.innerHTML = '';

@@ -26,7 +26,6 @@ namespace ChessSpace.Controllers {
                 }
             }
             catch (Exception ex) {
-                // Log the error for debugging
                 Console.WriteLine($"Fout bij verzenden e-mail: {ex.Message}");
             }
 
