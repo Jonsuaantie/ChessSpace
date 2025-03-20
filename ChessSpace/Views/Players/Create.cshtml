@@ -1,0 +1,27 @@
+﻿@model Player
+
+<h2>Nieuwe speler toevoegen</h2>
+<form asp-controller="Players" asp-action="Create" method="post" novalidate>
+    <label>Username:</label>
+    <input asp-for="UserName" name="UserName" class="form-control" required/>
+    <span asp-validation-for="UserName"></span>
+
+    <label>Email:</label>
+    <input asp-for="Email" name="Email" class="form-control" required/>
+    <span asp-validation-for="Email"></span>
+
+    <label>Password:</label>
+    <input asp-for="Password" name="Password" type="password" class="form-control" required/>
+    <span asp-validation-for="Password"></span>
+
+    <label>Elo Rating:</label>
+    <input asp-for="EloRating" class="form-control" />
+
+    <label>Avatar Number:</label>
+    <input asp-for="AvatarNumber" class="form-control" />
+
+    <label>Chess Status:</label>
+    <input asp-for="ChessStatus" class="form-control" />
+
+    <button type="submit" class="btn btn-primary mt-2">Toevoegen</button>
+</form>

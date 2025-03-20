@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Game Lobby";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
+    <link rel="stylesheet" href="~/css/site.css?v=1" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/pieces.css?v=2" asp-append-version="true">
+</head>
+<body>
+    <div id="chessboard" class="chessboard">
+        <table class="tablechess">
+            <tr>
+                <td id="A1" class="black"><button class="chessbutton orangerook" onclick="movePawn(event)"></button></td>
+                <td id="B1" class="white"><button class="chessbutton orangeknight" onclick="movePawn(event)"></button></td>
+                <td id="C1" class="black"><button class="chessbutton orangebishop" onclick="movePawn(event)"></button></td>
+                <td id="D1" class="white"><button class="chessbutton orangequeen" onclick="movePawn(event)"></button></td>
+                <td id="E1" class="black"><button class="chessbutton orangeking" onclick="movePawn(event)"></button></td>
+                <td id="F1" class="white"><button class="chessbutton orangebishop" onclick="movePawn(event)"></button></td>
+                <td id="G1" class="black"><button class="chessbutton orangeknight" onclick="movePawn(event)"></button></td>
+                <td id="H1" class="white"><button class="chessbutton orangerook" onclick="movePawn(event)"></button></td>
+            </tr>
+            <tr>
+                <td id="A2" class="white"><button class="chessbutton orangepawn" onclick="movePawn(event)"></button></td>
+                <td id="B2" class="black"><button class="chessbutton orangepawn" onclick="movePawn(event)"></button></td>
+                <td id="C2" class="white"><button class="chessbutton orangepawn" onclick="movePawn(event)"></button></td>
+                <td id="D2" class="black"><button class="chessbutton orangepawn" onclick="movePawn(event)"></button></td>
+                <td id="E2" class="white"><button class="chessbutton orangepawn" onclick="movePawn(event)"></button></td>
+                <td id="F2" class="black"><button class="chessbutton orangepawn" onclick="movePawn(event)"></button></td>
+                <td id="G2" class="white"><button class="chessbutton orangepawn" onclick="movePawn(event)"></button></td>
+                <td id="H2" class="black"><button class="chessbutton orangepawn" onclick="movePawn(event)"></button></td>
+            </tr>
+            <tr>
+                <td id="A3" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="B3" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="C3" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="D3" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="E3" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="F3" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="G3" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="H3" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+            </tr>
+            <tr>
+                <td id="A4" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="B4" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="C4" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="D4" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="E4" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="F4" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="G4" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="H4" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+            </tr>
+            <tr>
+                <td id="A5" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="B5" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="C5" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="D5" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="E5" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="F5" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="G5" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="H5" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+            </tr>
+            <tr>
+                <td id="A6" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="B6" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="C6" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="D6" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="E6" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="F6" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="G6" class="white"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+                <td id="H6" class="black"><button class="chessbutton" onclick="movePawn(event)"></button></td>
+            </tr>
+            <tr>
+                <td id="A7" class="black"><button class="chessbutton bluepawn" onclick="movePawn(event)"></button></td>
+                <td id="B7" class="white"><button class="chessbutton bluepawn" onclick="movePawn(event)"></button></td>
+                <td id="C7" class="black"><button class="chessbutton bluepawn" onclick="movePawn(event)"></button></td>
+                <td id="D7" class="white"><button class="chessbutton bluepawn" onclick="movePawn(event)"></button></td>
+                <td id="E7" class="black"><button class="chessbutton bluepawn" onclick="movePawn(event)"></button></td>
+                <td id="F7" class="white"><button class="chessbutton bluepawn" onclick="movePawn(event)"></button></td>
+                <td id="G7" class="black"><button class="chessbutton bluepawn" onclick="movePawn(event)"></button></td>
+                <td id="H7" class="white"><button class="chessbutton bluepawn" onclick="movePawn(event)"></button></td>
+            </tr>
+            <tr>
+                <td id="A8" class="white"><button class="chessbutton bluerook" onclick="movePawn(event)"></button></td>
+                <td id="B8" class="black"><button class="chessbutton blueknight" onclick="movePawn(event)"></button></td>
+                <td id="C8" class="white"><button class="chessbutton bluebishop" onclick="movePawn(event)"></button></td>
+                <td id="D8" class="black"><button class="chessbutton bluequeen" onclick="movePawn(event)"></button></td>
+                <td id="E8" class="white"><button class="chessbutton blueking" onclick="movePawn(event)"></button></td>
+                <td id="F8" class="black"><button class="chessbutton bluebishop" onclick="movePawn(event)"></button></td>
+                <td id="G8" class="white"><button class="chessbutton blueknight" onclick="movePawn(event)"></button></td>
+                <td id="H8" class="black"><button class="chessbutton bluerook" onclick="movePawn(event)"></button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="messages-container">
+        <input type="text" id="msgInput" placeholder="Type your message here...">
+        <button onclick="sendMessage()">Send</button>
+        <div id="messages" class="text-properties"></div>
+    </div>
+    
+    <p class="text-properties px40 left-top-corner">Game Code: <strong id="gamecode" class="text-properties px40">@Model.GameCode</strong></p>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script src="~/js/gameLobby.js"></script>
+

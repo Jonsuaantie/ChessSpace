@@ -1,0 +1,73 @@
+﻿.bluepawn {
+    background-image: url('../images/bluepawn.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.orangepawn {
+    background-image: url('../images/orangepawn.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.blueking {
+    background-image: url('../images/BlueKing.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.orangeking {
+    background-image: url('../images/OrangeKing.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.bluequeen {
+    background-image: url('../images/BlueQueen.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.orangequeen {
+    background-image: url('../images/OrangeQueen.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.bluerook {
+    background-image: url('../images/BlueRook.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.orangerook {
+    background-image: url('../images/OrangeRook.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.blueknight {
+    background-image: url('../images/BlueKnight.png');
+    background-size: 42px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.orangeknight {
+    background-image: url('../images/OrangeKnight.png');
+    background-size: 42px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bluebishop {
+    background-image: url('../images/BlueBishop.png');
+    background-size: 56px;
+    background-position: center;
+}
+
+.orangebishop {
+    background-image: url('../images/OrangeBishop.png');
+    background-size: 56px;
+    background-position: center;
+}

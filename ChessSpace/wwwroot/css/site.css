@@ -1,22 +1,247 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+    background-image: url('../images/ChessSpace Background.png');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column; 
+}
+
+.justcenter {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.65);
+    max-width: 400px;
+    width: 100%;
+}
+
+.text-container {
+    width: 80%;
+    text-align: center;
+    margin-bottom: 120px;
+    margin-top: 40px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.green-button {
+    background-color: #00F0C2;
+    border: 10px solid #2E937F;
+}
+
+.green-button:hover {
+    background-color: #00b78f;
+}
+
+.green-input {
+    background-color: #2E937F;
+    border: 10px solid #00F0C2;
+    border-radius: 50px
+}
+
+.green-input:hover {
+    background-color: #00b78f;
+}
+
+.purple-button {
+    background-color: #C307FF;
+    border: 10px solid #842AA1;
+}
+
+.purple-button:hover {
+    background-color: #a505d1;
+}
+
+.purple-input {
+    background-color: #842AA1;
+    border: 10px solid #C307FF;
+    border-radius: 50px
+}
+
+.purple-input:hover {
+    background-color: #a505d1;
+}
+
+.red-button {
+    background-color: #FF0000;
+    border: 10px solid #912020;
+    border-radius: 50px
+}
+red-button:hover {
+    background-color: #D40000;
+}
+
+.loginregisterbutton {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.px60{
+    font-size: 60px;
+    margin-block-end: 0;
+}
+.px35{
+    font-size: 35px;
+    margin-block-start: 0;
+}
+.px40 {
+    font-size: 40px;
+}
+.text-properties {
+    text-shadow: -4px 4px 1px rgba(0, 0, 0, 0.25);
+    font-family: 'Jaro', sans-serif;
+    color: white;
+}
+.tablechess {
+    border-collapse: separate;
+    width: 528px; /* Pas dit aan naar wens */
+    height: 528px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 20px;
+    box-shadow: 0 0 10px 18px rgba(0, 0, 0, 0.65);
+}
+
+    .tablechess td {
+        width: 12.5%; /* 1/8 van de totale breedte */
+        height: 12.5%; /* Schaalbare hoogte */
+        aspect-ratio: 1/1; /* Zorgt ervoor dat cellen vierkant blijven */
+        padding: 0;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+.white {
+    vertical-align: middle;
+    background-color: #00F0C2;
+    border: 7px solid #2E937F;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.white:hover {
+    background-color: #00b78f;
+}
+
+.black {
+    vertical-align: middle;
+    background-color: #C307FF;
+    border: 7px solid #842AA1;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+
+.black:hover {
+    background-color: #a505d1;
+}
+
+.chessbutton {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: block;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.messages-container {
+    position: absolute;
+    right: 20px;
+    top: 10%;
+    width: 250px;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.5); /* Transparante achtergrond */
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Jaro', sans-serif;
+    color: white;
+}
+
+.messages-container input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-family: 'Jaro', sans-serif;
+}
+
+.messages-container button {
+    background: cyan;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Jaro', sans-serif;
+    font-weight: bold;
+}
+
+.chessboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Hoogte volledig scherm */
+}
+.left-top-corner {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 10px; /* Optioneel: ruimte aan de randen */
+}
+
+.joingameinput {
+    min-height: 30px;
+    width: 60%;
+}
+
+.joingameinput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 10px;
+    text-align: center;
+    font-size: 17px;
+}  
+.alignright{
+    display: flex;
+    justify-content: center;
+}
+
+.joinbutton {
+    width: 100px;
+    font-size: 24px;
+    margin-top: 5px;
 }
