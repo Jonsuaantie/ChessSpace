@@ -3,6 +3,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChessSpace.Controllers {
     public class LoginRegisterController : Controller {
