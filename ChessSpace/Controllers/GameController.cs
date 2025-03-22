@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
 
 public class GameController : Controller {
     private readonly AppDbContext _context;
@@ -45,5 +46,22 @@ public class GameController : Controller {
 
     private string GenerateGameCode() {
         return Guid.NewGuid().ToString().Substring(0, 6).ToUpper();
+    }
+
+    public IActionResult HomePage() {
+        // Verkrijg de ingelogde gebruiker via de claims
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (userId != null) {
+            var player = _context.Players.SingleOrDefault(p => p.UserId.ToString() == userId);
+
+            if (player != null) {
+                // Zet de gegevens van de speler in de ViewData om door te geven aan de view
+                ViewData["UserName"] = player.UserName;
+                ViewData["EloRating"] = player.EloRating.HasValue ? player.EloRating.Value.ToString() : "N/A";
+            }
+        }
+
+        return View();
     }
 }

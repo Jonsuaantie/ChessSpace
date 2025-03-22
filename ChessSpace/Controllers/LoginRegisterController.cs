@@ -4,6 +4,10 @@ using MailKit.Net.Smtp;
 using MailKit.Security;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+
 
 namespace ChessSpace.Controllers {
     public class LoginRegisterController : Controller {
@@ -20,18 +24,17 @@ namespace ChessSpace.Controllers {
         [HttpPost]
         public IActionResult Register(Player player) {
             if (ModelState.IsValid) {
-                // Check if email already exists
                 if (_context.Players.Any(p => p.Email == player.Email)) {
                     ModelState.AddModelError("Email", "An account with this email already exists.");
                     return View(player);
                 }
 
-                // Generate verification code
+                player.HashPassword();
+
                 int verificationCode = new Random().Next(100000, 999999);
                 TempData["VerificationCode"] = verificationCode;
                 TempData["Player"] = JsonConvert.SerializeObject(player);
 
-                // Send verification email
                 var email = new MimeMessage();
                 email.From.Add(MailboxAddress.Parse("chessspacenoreply@gmail.com"));
                 email.To.Add(MailboxAddress.Parse(player.Email));
@@ -66,8 +69,6 @@ namespace ChessSpace.Controllers {
             return View();
         }
 
-        int verificationcode;
-
         [HttpPost]
         public IActionResult VerifyCode(int code) {
             if (TempData["VerificationCode"] != null) {
@@ -92,6 +93,42 @@ namespace ChessSpace.Controllers {
             TempData.Keep("Player");
 
             return View();
+        }
+
+        public IActionResult Login() {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(string email, string password) {
+            var player = _context.Players.SingleOrDefault(p => p.Email == email);
+            if (player != null && player.VerifyPassword(password)) {
+                var claims = new List<Claim> {
+                    new Claim(ClaimTypes.NameIdentifier, player.UserId.ToString()),
+                    new Claim(ClaimTypes.Name, player.UserName),
+                    new Claim(ClaimTypes.Email, player.Email)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+                };
+
+                await HttpContext.SignInAsync("CookieAuth", new ClaimsPrincipal(claimsIdentity), authProperties);
+
+                return RedirectToAction("HomePage", "Game");
+            }
+
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout(string name) {
+            string Name = name;   
+            await HttpContext.SignOutAsync("CookieAuth");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
