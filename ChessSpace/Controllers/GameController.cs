@@ -49,14 +49,12 @@ public class GameController : Controller {
     }
 
     public IActionResult HomePage() {
-        // Verkrijg de ingelogde gebruiker via de claims
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
         if (userId != null) {
             var player = _context.Players.SingleOrDefault(p => p.UserId.ToString() == userId);
 
             if (player != null) {
-                // Zet de gegevens van de speler in de ViewData om door te geven aan de view
                 ViewData["UserName"] = player.UserName;
                 ViewData["EloRating"] = player.EloRating.HasValue ? player.EloRating.Value.ToString() : "N/A";
             }
