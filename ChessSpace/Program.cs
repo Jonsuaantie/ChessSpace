@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +21,17 @@ builder.Services.AddSession(options => {
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options => {
+    options.Filters.Add(new AuthorizeFilter());
+});
 builder.Services.AddSignalR();
+builder.Services.ConfigureApplicationCookie(options => {
+    options.LoginPath = "/LoginRegister/Login";
+});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -42,6 +53,7 @@ app.UseSession();
 app.MapRazorPages();
 app.MapControllers();
 app.MapHub<ChessHub>("/ChessHub");
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

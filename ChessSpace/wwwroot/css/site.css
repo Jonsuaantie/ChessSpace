@@ -331,3 +331,39 @@ h1 {
     margin-bottom: 20px;
     margin-left: 20px;
 }
+
+.modal {
+    display: none; /* Verborgen standaard */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    width: 300px;
+    flex-direction: column;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 15px;
+    cursor: pointer;
+}

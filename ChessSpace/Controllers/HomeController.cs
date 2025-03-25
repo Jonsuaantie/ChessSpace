@@ -1,5 +1,6 @@
 using ChessSpace.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -11,6 +12,7 @@ namespace ChessSpace.Controllers {
             _logger = logger;
         }
 
+        [AllowAnonymous]
         public IActionResult Index() {
             return View();
         }
