@@ -44,7 +44,6 @@ function movePawn(event) {
     ];
 
     if (selectedPiece === null) {
-        // Selecteer een stuk
         if (pieceClasses.some(cls => clickedButton.classList.contains(cls))) {
             selectedPiece = clickedButton;
             selectedpiececell = clickedCell;
