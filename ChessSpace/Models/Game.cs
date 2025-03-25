@@ -9,6 +9,6 @@ public class Game {
 
     public DateTime CreatedAt { get; set; }
 
-    public string? BoardState { get; set; }  // Een string die de huidige staat van het bord bijhoudt
-    public string? CurrentPlayer { get; set; }  // Wie is aan de beurt? ("Player1" of "Player2")
+    public string? BoardState { get; set; }  
+    public string? CurrentPlayer { get; set; }  
 }

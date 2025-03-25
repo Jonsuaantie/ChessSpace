@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Identity;
 
 public class Player {
     [Key]
@@ -20,4 +20,15 @@ public class Player {
     public int? EloRating { get; set; }
     public int? AvatarNumber { get; set; }
     public string? ChessStatus { get; set; }
+
+    private static readonly PasswordHasher<Player> passwordHasher = new PasswordHasher<Player>();
+
+    public void HashPassword() {
+        Password = passwordHasher.HashPassword(this, Password);
+    }
+
+    public bool VerifyPassword(string password) {
+        var result = passwordHasher.VerifyHashedPassword(this, Password, password);
+        return result == PasswordVerificationResult.Success;
+    }
 }
