@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "HomePage";
+    var userName = ViewData["UserName"] ?? "Guest";
+    var eloRating = ViewData["EloRating"] ?? "N/A";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
+    <link rel="stylesheet" href="~/css/site.css?v=13" asp-append-version="true">
+</head>
+<body>
+    <div class="container" style="flex-direction: row; justify-content: space-between; width: 90%;">
+        <div style="text-align: left; display: flex; flex-direction: column;">
+            <h1 class="text-properties welcomemessage">Welcome @userName</h1>
+            <div class="homepagebuttons">
+                <button class="purple-button px30 text-properties">Play a match!</button>
+                <button class="purple-button px30 text-properties">Lessons</button>
+                <button class="purple-button px30 text-properties">Friends</button>
+                <button class="purple-button px30 text-properties">Profile</button>
+                <button class="green-button px30 text-properties">About ChessSpace</button>
+                <form method="post" action="@Url.Action("Logout", "LoginRegister")">
+                    <input type="hidden" name="userName" value="@userName">
+                    <button type="submit" class="red-button px30 text-properties">Log Out</button>
+                </form>
+            </div>
+            <p class="text-properties px20" style="margin-top: 20px; margin-left: 20px;">Your current Chess Rating (ELO): <b>@eloRating</b></p>
+        </div>
+
+        <div class="chessboard">
+            <chessboard-image></chessboard-image>
+        </div>
+    </div>
+    <script src="~/js/chessboard.js" defer></script>
+</body>
+</html>

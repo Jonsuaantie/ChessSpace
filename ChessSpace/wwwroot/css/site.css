@@ -28,12 +28,21 @@ body {
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.65);
     max-width: 400px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.marginbottom120 {
+    width: 80%;
+    text-align: center;
+    margin-bottom: 120px;
+    margin-top: 40px;
 }
 
 .text-container {
     width: 80%;
     text-align: center;
-    margin-bottom: 120px;
+    margin-bottom: 20px;
     margin-top: 40px;
 }
 
@@ -41,6 +50,19 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    box-sizing: border-box;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 90%;
+}
+
+.margin-bottom{
+    margin-bottom: 20px;
 }
 
 button {
@@ -53,6 +75,21 @@ button {
     align-items: center;
     text-align: center;
 }
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #B02A2A; /* Fill color */
+    color: white;
+    font-family: 'Jaro', sans-serif;
+    padding: 15px;
+    border: 10px solid #FF0000; /* Border color */
+    border-radius: 50px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 
 .green-button {
     background-color: #00F0C2;
@@ -97,8 +134,8 @@ button {
     border: 10px solid #912020;
     border-radius: 50px
 }
-red-button:hover {
-    background-color: #D40000;
+.red-button:hover {
+    background-color: #b51f1f;
 }
 
 .loginregisterbutton {
@@ -113,9 +150,22 @@ red-button:hover {
     font-size: 35px;
     margin-block-start: 0;
 }
+.px30 {
+    font-size: 30px;
+    margin-block-start: 0;
+}
 .px40 {
     font-size: 40px;
 }
+
+.px20 {
+    font-size: 20px;
+}
+
+.height{
+    height: 20px;
+}
+
 .text-properties {
     text-shadow: -4px 4px 1px rgba(0, 0, 0, 0.25);
     font-family: 'Jaro', sans-serif;
@@ -234,7 +284,16 @@ red-button:hover {
     margin-left: 10px;
     text-align: center;
     font-size: 17px;
-}  
+    font-family: 'Jaro', sans-serif;
+}
+
+.purple-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 10px;
+    text-align: center;
+    font-size: 17px;
+    font-family: 'Jaro', sans-serif;
+} 
 .alignright{
     display: flex;
     justify-content: center;
@@ -244,4 +303,31 @@ red-button:hover {
     width: 100px;
     font-size: 24px;
     margin-top: 5px;
+}
+
+h1 {
+    text-align: center;
+}
+.chessboard-img {
+    width: 480px;
+    height: 480px;
+    object-fit: contain;
+    border-radius: 17px;
+    box-shadow: 0 0 10px 18px rgba(0, 0, 0, 0.65);
+    margin-left: 40px;
+}
+.homepagebuttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    margin: 20px;
+    max-width: 400px;
+    margin-left: 210px;
+}
+.welcomemessage {
+    font-size: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
 }

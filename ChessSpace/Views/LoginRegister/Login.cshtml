@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Login Page";
+    ViewData["Title"] = "Login";
 }
 
 <!DOCTYPE html>
@@ -7,33 +7,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
+    <link rel="stylesheet" href="~/css/site.css?v=4" asp-append-version="true">
 </head>
 <body>
-    <div style="position: absolute; top: 20px; left: 20px;">
-        <a href="@Url.Action("Index", "Home")" class="text-properties red-button coolbutton">Go Back</a>
-    </div>
-
-    <div style="text-align: center; padding-top: 50px;">
-        <h2 class="text-properties">Login to Your Account</h2>
-
-        <form method="post" action="@Url.Action("Login", "LoginRegister")">
-            <div style="margin-bottom: 15px;">
-                <label class="text-properties" for="email">Email:</label>
-                <input class="purple-input text-properties" type="email" id="email" name="email" required placeholder="Enter your email" />
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label class="text-properties" for="password">Password:</label>
-                <input class="purple-input text-properties" type="password" id="password" name="password" required placeholder="Enter your password" />
-            </div>
-
-            <div style="margin-top: 20px;">
-                <button type="submit" class="green-button text-properties coolbutton">Login</button>
+    <div class="container">
+        <div class="text-container">
+            <h1 class="px40 text-properties">Login</h1>
+        </div>
+        <form class="form-container" asp-controller="LoginRegister" asp-action="Login" method="post" novalidate>
+            <div class="register-container">
+                <label class="text-properties">Email:</label>
+                <input type="email" name="email" class="purple-input margin-bottom height text-properties" placeholder="Enter your email" required>
+                <label class="text-properties">Password:</label>
+                <input type="password" name="password" class="purple-input margin-bottom height text-properties" placeholder="Enter your password" required>
+                <button type="submit" class="green-button margin-bottom text-properties px20">Login</button>
             </div>
         </form>
+        @if (ViewBag.Error != null) {
+            <p class="text-properties px35">@ViewBag.Error</p>
+        }
     </div>
 </body>
 </html>

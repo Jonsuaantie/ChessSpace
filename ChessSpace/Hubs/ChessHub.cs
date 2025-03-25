@@ -17,7 +17,6 @@ public class ChessHub : Hub {
     }
 
 
-    // Deze methode voegt een speler toe aan de gamegroep
     public async Task JoinGame(string gameCode) {
         await Groups.AddToGroupAsync(Context.ConnectionId, gameCode);
         Console.WriteLine(Groups);
