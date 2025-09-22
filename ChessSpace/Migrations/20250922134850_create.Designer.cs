@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChessSpace.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250922133614_create")]
+    [Migration("20250922134850_create")]
     partial class create
     {
         /// <inheritdoc />
