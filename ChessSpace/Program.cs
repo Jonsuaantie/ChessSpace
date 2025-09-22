@@ -6,7 +6,6 @@ builder.Services.AddRazorPages();
 // 🔹 PostgreSQL (Neon) setup via environment variable
 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__ChessSpace")
                        ?? builder.Configuration.GetConnectionString("ChessSpace");
-
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
