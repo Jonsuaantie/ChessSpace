@@ -3,13 +3,9 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
-// 🔹 Connection string (Environment Variable of fallback)
-var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__ChessSpace")
-                       ?? "Host=mdmgobelhtzscxnhmqxo.supabase.co;Database=postgres;Username=postgres;Password=onbelangRyk!0;Port=5432;SSL Mode=Require;Trust Server Certificate=true";
-
-// 🔹 DbContext registreren
+// 🔹 SQLite setup
 builder.Services.AddDbContext<AppDbContext>(options =>
-       options.UseNpgsql(connectionString));
+    options.UseSqlite("Data Source=ChessSpace.db"));
 
 // 🔹 Authentication & Session
 builder.Services.AddAuthentication("CookieAuth")
@@ -34,12 +30,6 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope()) {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
-}
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment()) {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
