@@ -3,9 +3,12 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
-// 🔹 SQLite setup
+// 🔹 PostgreSQL (Neon) setup via environment variable
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__ChessSpace")
+                       ?? builder.Configuration.GetConnectionString("ChessSpace");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=ChessSpace.db"));
+    options.UseNpgsql(connectionString));
 
 // 🔹 Authentication & Session
 builder.Services.AddAuthentication("CookieAuth")
