@@ -1,12 +1,17 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
-// Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=chessspace.db"));
+// 🔹 Connection string (Environment Variable of fallback)
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__ChessSpace")
+                       ?? "Host=mdmgobelhtzscxnhmqxo.supabase.co;Database=postgres;Username=postgres;Password=onbelangRyk!0;Port=5432;SSL Mode=Require;Trust Server Certificate=true";
 
+// 🔹 DbContext registreren
+builder.Services.AddDbContext<AppDbContext>(options =>
+       options.UseNpgsql(connectionString));
+
+// 🔹 Authentication & Session
 builder.Services.AddAuthentication("CookieAuth")
     .AddCookie("CookieAuth", config => {
         config.Cookie.Name = "UserLoginCookie";
@@ -19,15 +24,21 @@ builder.Services.AddSession(options => {
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
 
+// 🔹 Automatisch migrations uitvoeren bij startup
+using (var scope = app.Services.CreateScope()) {
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment()) {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -44,7 +55,7 @@ app.MapControllers();
 app.MapHub<ChessHub>("/ChessHub");
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 
 app.Run();
-
