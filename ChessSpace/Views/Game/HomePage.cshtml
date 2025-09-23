@@ -12,13 +12,49 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
     <link rel="stylesheet" href="~/css/site.css?v=13" asp-append-version="true">
+
+    <style>
+        /* Overlay background */
+        .modal-overlay {
+            display: none; /* standaard verborgen */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+
+        /* Modal venster */
+        .modal {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 300px;
+        }
+
+            .modal h2 {
+                margin-bottom: 20px;
+            }
+
+            .modal button {
+                margin: 10px;
+            }
+    </style>
 </head>
 <body>
     <div class="container" style="flex-direction: row; justify-content: space-between; width: 90%;">
         <div style="text-align: left; display: flex; flex-direction: column;">
             <h1 class="text-properties welcomemessage">Welcome @userName</h1>
             <div class="homepagebuttons">
-                <button class="purple-button px30 text-properties">Play a match!</button>
+                <!-- Play a match button -->
+                <button id="playMatchBtn" class="purple-button px30 text-properties">Play a match!</button>
+
                 <button class="purple-button px30 text-properties">Lessons</button>
                 <button class="purple-button px30 text-properties">Friends</button>
                 <button class="purple-button px30 text-properties">Profile</button>
@@ -35,6 +71,37 @@
             <chessboard-image></chessboard-image>
         </div>
     </div>
+
+    <!-- Modal overlay -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <h2>Choose an option</h2>
+            <a href="/game/creategame"><button class="purple-button px30 text-properties">Create Game</button></a>
+            <a href="/game/joingame"><button class="purple-button px30 text-properties">Join Game</button></a>
+            <br />
+            <button id="closeModal" class="red-button px20 text-properties">Cancel</button>
+        </div>
+    </div>
+
     <script src="~/js/chessboard.js" defer></script>
+    <script>
+        const playMatchBtn = document.getElementById("playMatchBtn");
+        const modalOverlay = document.getElementById("modalOverlay");
+        const closeModal = document.getElementById("closeModal");
+
+        playMatchBtn.addEventListener("click", () => {
+            modalOverlay.style.display = "flex";
+        });
+
+        closeModal.addEventListener("click", () => {
+            modalOverlay.style.display = "none";
+        });
+
+        window.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
