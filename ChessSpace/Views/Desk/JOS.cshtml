@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-OS(hua) Boot Screen</title>
+    <link rel="stylesheet" href="~/css/JOS.css" asp-append-version="true">
+</head>
+<body>
+    <!-- Boot screen -->
+    <div id="boot-screen">
+        <div class="spinner">
+            <div style="--angle:0deg;"></div>
+            <div style="--angle:60deg;"></div>
+            <div style="--angle:120deg;"></div>
+            <div style="--angle:180deg;"></div>
+            <div style="--angle:240deg;"></div>
+            <div style="--angle:300deg;"></div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="boot-text" style="animation-delay: 0.5s;">J-OS(hua) v1.0</div>
+        <div class="boot-text" style="animation-delay: 1.5s;">Initializing system...</div>
+        <div class="boot-text" style="animation-delay: 2.5s;">Loading drivers...</div>
+        <div class="boot-text" style="animation-delay: 3.5s;">Starting UI...</div>
+    </div>
+
+    <!-- Main website content -->
+    <div id="main-content">
+        <h1>Welkom bij J-OS(hua)!</h1>
+        <p>Dit is je website na het opstartscherm 😎</p>
+    </div>
+
+    <script>
+        // Verberg boot screen na laden
+        window.addEventListener("load", () => {
+          setTimeout(() => {
+            document.getElementById("boot-screen").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+            document.body.style.overflow = "auto";
+          }, 5500);
+        });
+    </script>
+</body>
+</html>

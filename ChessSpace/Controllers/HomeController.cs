@@ -14,6 +14,9 @@ namespace ChessSpace.Controllers {
         public IActionResult Index() {
             return View();
         }
+        public IActionResult Chessspace() {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() {

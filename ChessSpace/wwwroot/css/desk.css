@@ -1,0 +1,37 @@
+﻿body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e1e1e;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url("../images/desk.png") no-repeat center center;
+    background-size: cover;
+}
+
+.image {
+    display: none;
+}
+
+
+.screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0.3deg);
+    width: 22.4%;
+    height: 22.1%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+    .screen:hover {
+        border: 2px solid rgba(0, 200, 255, 0.6);
+    }

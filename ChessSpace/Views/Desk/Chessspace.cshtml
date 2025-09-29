@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
+    <link rel="stylesheet" href="~/css/site.css?v=1" asp-append-version="true">
+</head>
+<body>
+    @if (TempData["Notification"] != null) {
+        <div class="notification">
+            @TempData["Notification"]
+        </div>
+    }
+    <div class="container">
+        <div class=" marginbottom120">
+            <h1 class="px60 text-properties">Welcome to ChessSpace!</h1>
+            <h2 class="px35 text-properties">The best Chess website in <br> the Galaxy!</h2>
+        </div>
+        <div class="btn-container">
+            <form method="get" action="@Url.Action("Login", "LoginRegister")">
+                <button type="submit" class="purple-button loginregisterbutton text-properties px40 coolbutton">Log in</button>
+            </form>
+            <form method="get" action="@Url.Action("Register", "LoginRegister")">
+                <button type="submit" class="green-button loginregisterbutton text-properties px40 coolbutton">Create an Account</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
