@@ -11,27 +11,44 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: url("../images/desk.png") no-repeat center center;
+    background: url("../images/gamingsetupoff.jpg") no-repeat center center;
     background-size: cover;
+    background-position: center 90%;
+    overflow: hidden;
+    transition: background-image 1s ease-in-out;
 }
 
-.image {
-    display: none;
-}
-
+    /* Toggle 'on' class voor aan/uit */
+    .container.on {
+        background-image: url("../images/gamingsetupon.jpg");
+    }
 
 .screen {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0.3deg);
-    width: 22.4%;
-    height: 22.1%;
+    top: 12.9%;
+    left: 23.5%;
+    width: 51.5%;
+    height: 45.2%;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: border 0.3s ease;
+    transition: border 3.3s ease;
+    z-index: 1; /* lager dan onbutton */
 }
 
-    .screen:hover {
-        border: 2px solid rgba(0, 200, 255, 0.6);
-    }
+.onbutton {
+    position: absolute;
+    top: 68.1%;
+    left: 75%;
+    width: 5%;
+    height: 5%;
+    cursor: pointer;
+    border: 2px solid red;
+    z-index: 3; /* hoger dan alles */
+    background-color: transparent;
+}
+
+/* Zoom animatie voor screen click */
+.screen.zoom {
+    transform: scale(1.3);
+    transition: transform 0.8s ease;
+}

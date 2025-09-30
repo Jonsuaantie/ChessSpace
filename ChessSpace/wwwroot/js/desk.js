@@ -1,9 +1,23 @@
-﻿const screen = document.querySelector('.screen');
+﻿document.addEventListener('DOMContentLoaded', () => {
+    const screen = document.querySelector('.screen');
+    const button = document.querySelector('.onbutton');
+    const container = document.querySelector('.container');
 
-// Screen zoom animatie en redirect
-screen.addEventListener('click', () => {
-    screen.classList.add('zoom');
-    setTimeout(() => {
-        window.location.href = "projects.html"; // Nieuwe pagina
-    }, 800);
+    if (screen) {
+        // Screen zoom animatie en redirect
+        screen.addEventListener('click', () => {
+            screen.classList.add('zoom');
+            setTimeout(() => {
+                window.location.href = "projects.html"; // Nieuwe pagina
+            }, 800);
+        });
+    }
+
+    if (button && container) {
+        // Toggle aan/uit
+        button.addEventListener('click', (e) => {
+            console.log("Button clicked!");
+            container.classList.toggle('on');
+        });
+    }
 });
