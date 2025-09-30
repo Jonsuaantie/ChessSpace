@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="~/css/JOS.css" asp-append-version="true">
 </head>
 <body>
-    <!-- Boot screen -->
     <div id="boot-screen">
         <div class="spinner">
             <div style="--angle:0deg;"></div>
@@ -28,21 +27,13 @@
         <div class="boot-text" style="animation-delay: 3.5s;">Starting UI...</div>
     </div>
 
-    <!-- Main website content -->
     <div id="main-content">
-        <h1>Welkom bij J-OS(hua)!</h1>
-        <p>Dit is je website na het opstartscherm 😎</p>
     </div>
 
     <script>
-        // Verberg boot screen na laden
-        window.addEventListener("load", () => {
-          setTimeout(() => {
-            document.getElementById("boot-screen").style.display = "none";
-            document.getElementById("main-content").style.display = "block";
-            document.body.style.overflow = "auto";
-          }, 5500);
-        });
+        setTimeout(function() {
+            window.location.href = '@Url.Action("Desktop", "Desk")';
+        }, 5500);
     </script>
 </body>
 </html>

@@ -1,0 +1,128 @@
+﻿/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: linear-gradient(180deg, #0f1720 0%, #102233 40%), url('/images/wallpaper.jpg') center/cover no-repeat;
+    color: #e6eef8;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+}
+
+
+/* Bureaublad (wrapper) */
+.desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* Desktop icon grid */
+.desktop-icons {
+    position: absolute;
+    top: 8vh;
+    left: 4vw;
+    display: grid;
+    grid-template-columns: repeat(3, 96px);
+    grid-auto-rows: 110px;
+    gap: 18px 22px;
+}
+
+
+.desktop-icon {
+    width: 96px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    user-select: none;
+}
+
+
+    .desktop-icon .icon {
+        width: 96px;
+        height: 96px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        box-shadow: 0 4px 10px rgba(2,6,23,0.6);
+        transition: transform 0.15s ease, background 0.15s ease;
+    }
+        .desktop-icon .icon img {
+            max-width: 96px; 
+            max-height: 96px;
+            border-radius: 18px;
+        }
+
+
+    .desktop-icon:hover .icon {
+        transform: translateY(-6px) scale(1.03);
+        background: rgba(255,255,255,0.09);
+    }
+
+    .desktop-icon .label {
+        margin-top: 8px;
+        font-size: 12px;
+        opacity: 0.9;
+    }
+
+
+/* Taakbalk */
+.taskbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    backdrop-filter: blur(10px) saturate(120%);
+    background: linear-gradient(180deg, rgba(24,26,30,0.35), rgba(8,10,12,0.45));
+    border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+
+.tb-center {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.tb-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+    transition: background 0.15s ease, transform 0.12s ease;
+}
+
+    .tb-btn:hover {
+        background: rgba(255,255,255,0.04);
+        transform: translateY(-2px);
+    }
+
+
+.tb-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;

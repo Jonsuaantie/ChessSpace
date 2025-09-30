@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>J-OS(hua) Desktop</title>
+    <link rel="stylesheet" href="/css/Desktop.css" />
+</head>
+<body>
+    <div class="desktop">
+        <!-- Desktop icons (niet-werkend links) -->
+        <div class="desktop-icons">
+            <a href="javascript:void(0)" class="desktop-icon" title="Mijn documenten">
+                <div class="icon glass">📁</div>
+                <div class="label">Mijn documenten</div>
+            </a>
+
+            <a href="javascript:void(0)" class="desktop-icon" title="Browser">
+                <div class="icon glass">🌐</div>
+                <div class="label">Browser</div>
+            </a>
+
+            <a href= "javascript:void(0)" class="desktop-icon" title="Prullenbak">
+                <div class="icon glass">🗑️</div>
+                <div class="label">Prullenbak</div>
+            </a>
+            <a href="@Url.Action("Chessspace", "Desk")" class="desktop-icon" title="ChessSpace">
+                <div class="icon glass">
+                    <img src="~/images/ChessSpace logo.png" alt="ChessSpace" />
+                </div>
+                <div class="label">ChessSpace</div>
+            </a>
+        </div>
+
+        <!-- Taakbalk -->
+        <div class="taskbar" role="navigation" aria-label="Taakbalk">
+            <div style="width:12px"></div>
+
+            <div class="tb-center" aria-hidden="false">
+                <a class="tb-btn" href="#" title="Start">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5" fill="white" opacity="0.85" /><rect x="13" y="3" width="8" height="8" rx="1.5" fill="white" opacity="0.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" fill="white" opacity="0.55" /><rect x="13" y="13" width="8" height="8" rx="1.5" fill="white" opacity="0.35" /></svg>
+                </a>
+
+                <a class="tb-btn" href="#" title="Zoeken">
+                    🔎
+                </a>
+
+                <a class="tb-btn" href="#" title="Takenoverzicht">
+                    ☐
+                </a>
+            </div>
+
+            <div style="flex:1"></div>
+
+            <div class="tb-right">
+                <div class="tray-icon" title="Netwerk">📶</div>
+                <div class="tray-icon" title="Volume">🔊</div>
+                <div class="clock" aria-live="polite">
+                    <div class="time" id="time">--:--</div>
+                    <div class="date" id="date">-- -- ----</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/desktop.js"></script>
+</body>
+</html>
