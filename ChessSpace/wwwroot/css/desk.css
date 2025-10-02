@@ -1,34 +1,39 @@
 ﻿body {
     margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #1e1e1e;
+    background: linear-gradient(135deg, #1e1e1e, #333); /* of gewoon #1e1e1e */
 }
 
 .container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: url("../images/gamingsetupoff.jpg") no-repeat center center;
-    background-size: cover;
-    background-position: center 90%;
+    display: flex; /* flex toevoegen */
+    justify-content: center; /* horizontaal centreren */
+    align-items: center; /* verticaal centreren */
     overflow: hidden;
-    transition: background-image 1s ease-in-out;
+}
+.bg-wrapper {
+    position: relative;
+    display: inline-block; /* past zich aan aan de afbeelding */
 }
 
-    .container.on {
-        background-image: url("../images/gamingsetupon.jpg");
-    }
+.bg-img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100vw;
+    max-height: 100vh;
+}
 
+/* SCREEN HOVER EFFECT */
 .screen::after {
     content: "";
     position: absolute;
     inset: 0;
     background: url("../images/screenhover.png") no-repeat center center;
     background-size: cover;
-    background-position: center;
     opacity: 0;
     transition: opacity 0.9s ease-in-out;
     pointer-events: none;
@@ -39,31 +44,37 @@
     opacity: 1;
 }
 
+/* SCREEN */
 .screen {
     position: absolute;
-    top: 12.9%;
+    top: 27.9%; /* percentage t.o.v. de afbeelding */
     left: 23.5%;
     width: 51.5%;
-    height: 45.2%;
+    height: 34.2%;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: border 0.3s ease;
-    z-index: 1;
+    z-index: 3;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
     .screen.zoom {
         transform: scale(2.5);
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+/* ONBUTTON */
 .onbutton {
     position: absolute;
-    top: 58.5%;
+    top: 63.3%;
     left: 73.96%;
     width: 1.8%;
-    height: 4%;
+    height: 3.5%;
     cursor: pointer;
     border: 2px solid transparent;
-    z-index: 3;
+    z-index: 4;
     background-color: transparent;
+}
+
+/* TURN ON BACKGROUND SWITCH */
+.container.on .bg-img {
+    content: url("../images/gamingsetupon.jpg");
 }
