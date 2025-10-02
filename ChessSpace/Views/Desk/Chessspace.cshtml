@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="~/css/site.css?v=1" asp-append-version="true">
 </head>
 <body>
+    <form method="post" action="@Url.Action("Desktop", "Desk")">
+        <button type="submit" class="text-properties red-button px20">Close App</button>
+    </form>
     @if (TempData["Notification"] != null) {
         <div class="notification">
             @TempData["Notification"]

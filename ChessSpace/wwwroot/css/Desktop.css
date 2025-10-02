@@ -1,5 +1,4 @@
-﻿/* Reset */
-* {
+﻿* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -18,7 +17,6 @@ body {
 }
 
 
-/* Bureaublad (wrapper) */
 .desktop {
     position: relative;
     width: 100vw;
@@ -26,7 +24,6 @@ body {
 }
 
 
-/* Desktop icon grid */
 .desktop-icons {
     position: absolute;
     top: 8vh;
@@ -78,7 +75,6 @@ body {
     }
 
 
-/* Taakbalk */
 .taskbar {
     position: absolute;
     left: 0;
@@ -126,3 +122,53 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
+}
+.clock {
+    min-width: 92px;
+    text-align: right;
+    font-size: 13px;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.clock .time {
+    font-weight: 600;
+    font-size: 16px;
+}
+.clock .date {
+    font-size: 14px;
+}
+
+.tray-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: background 0.12s ease;
+}
+
+    .tray-icon:hover {
+        background: rgba(255,255,255,0.03);
+    }
+
+
+@media (max-width: 800px) {
+    .desktop-icons {
+        left: 12px;
+        grid-template-columns: repeat(2, 80px);
+    }
+
+    .tb-center {
+        gap: 8px;
+    }
+}
+
+
+.glass {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius: 10px;
+}

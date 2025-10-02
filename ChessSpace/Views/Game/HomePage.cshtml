@@ -12,11 +12,9 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://use.typekit.net/zlq0erw.css">
     <link rel="stylesheet" href="~/css/site.css?v=13" asp-append-version="true">
-
     <style>
-        /* Overlay background */
         .modal-overlay {
-            display: none; /* standaard verborgen */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -29,7 +27,6 @@
         }
 
 
-        /* Modal venster */
         .modal {
             background: #fff;
             padding: 30px;
@@ -48,11 +45,13 @@
     </style>
 </head>
 <body>
+    <form method="post" action="@Url.Action("Desktop", "Desk")">
+        <button type="submit" class="text-properties red-button px20">Close App</button>
+    </form>
     <div class="container" style="flex-direction: row; justify-content: space-between; width: 90%;">
         <div style="text-align: left; display: flex; flex-direction: column;">
             <h1 class="text-properties welcomemessage">Welcome @userName</h1>
             <div class="homepagebuttons">
-                <!-- Play a match button -->
                 <button id="playMatchBtn" class="purple-button px30 text-properties">Play a match!</button>
 
                 <button class="purple-button px30 text-properties">Lessons</button>
@@ -72,7 +71,6 @@
         </div>
     </div>
 
-    <!-- Modal overlay -->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal">
             <h2>Choose an option</h2>

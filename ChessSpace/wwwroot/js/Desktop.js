@@ -3,17 +3,19 @@
     const timeEl = document.getElementById('time');
     const dateEl = document.getElementById('date');
 
-
     const hours = now.getHours().toString().padStart(2, '0');
     const mins = now.getMinutes().toString().padStart(2, '0');
     timeEl.textContent = hours + ':' + mins;
 
-
-    const opts = { weekday: 'short', day: 'numeric', month: 'short' };
-    dateEl.textContent = now.toLocaleDateString('nl-NL', opts);
+    const day = now.getDate().toString().padStart(1, '0');
+    const month = (now.getMonth() + 1).toString().padStart(1, '0');
+    const year = now.getFullYear();
+    dateEl.textContent = `${day}-${month}-${year}`;
 }
+
 updateClock();
 setInterval(updateClock, 1000 * 30);
+
 
 
 const desktopIcons = document.querySelectorAll('.desktop-icon');

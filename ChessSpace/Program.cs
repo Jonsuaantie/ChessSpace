@@ -3,13 +3,11 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
-// 🔹 PostgreSQL (Neon) setup via environment variable
 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__ChessSpace")
                        ?? builder.Configuration.GetConnectionString("ChessSpace");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// 🔹 Authentication & Session
 builder.Services.AddAuthentication("CookieAuth")
     .AddCookie("CookieAuth", config => {
         config.Cookie.Name = "UserLoginCookie";
@@ -28,7 +26,6 @@ builder.Services.AddSignalR();
 
 var app = builder.Build();
 
-// 🔹 Automatisch migrations uitvoeren bij startup
 using (var scope = app.Services.CreateScope()) {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();

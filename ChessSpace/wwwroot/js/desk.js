@@ -6,11 +6,7 @@
     if (screen) {
         screen.addEventListener('click', () => {
             if (container.classList.contains('on')) {
-                screen.classList.add('zoom');
-                const targetUrl = screen.dataset.url;
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 800);
+                window.location.href = screen.dataset.url;
             }
         });
     }

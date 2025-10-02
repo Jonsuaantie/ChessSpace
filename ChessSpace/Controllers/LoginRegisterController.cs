@@ -80,7 +80,7 @@ namespace ChessSpace.Controllers {
                         _context.Players.Add(player);
                         _context.SaveChanges();
                         TempData["Notification"] = "⚠️Your account has been successfully registered.";
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Chessspace", "Home");
                     }
                 }
                 TempData["Notification"] = "⚠️Invalid verification code!";
@@ -129,6 +129,13 @@ namespace ChessSpace.Controllers {
             string Name = name;   
             await HttpContext.SignOutAsync("CookieAuth");
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public JsonResult IsEmailAvailable(string email)
+        {
+            bool exists = _context.Players.Any(p => p.Email == email);
+            return Json(!exists);
         }
     }
 }

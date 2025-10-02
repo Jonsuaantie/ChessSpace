@@ -80,11 +80,11 @@ button {
     position: fixed;
     top: 20px;
     right: 20px;
-    background-color: #B02A2A; /* Fill color */
+    background-color: #B02A2A;
     color: white;
     font-family: 'Jaro', sans-serif;
     padding: 15px;
-    border: 10px solid #FF0000; /* Border color */
+    border: 10px solid #FF0000;
     border-radius: 50px;
     z-index: 1000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -132,7 +132,8 @@ button {
 .red-button {
     background-color: #FF0000;
     border: 10px solid #912020;
-    border-radius: 50px
+    border-radius: 50px;
+    cursor: pointer;
 }
 .red-button:hover {
     background-color: #b51f1f;
@@ -173,7 +174,7 @@ button {
 }
 .tablechess {
     border-collapse: separate;
-    width: 528px; /* Pas dit aan naar wens */
+    width: 528px;
     height: 528px;
     background-color: rgba(0, 0, 0, 0.65);
     border-radius: 20px;
@@ -181,9 +182,9 @@ button {
 }
 
     .tablechess td {
-        width: 12.5%; /* 1/8 van de totale breedte */
-        height: 12.5%; /* Schaalbare hoogte */
-        aspect-ratio: 1/1; /* Zorgt ervoor dat cellen vierkant blijven */
+        width: 12.5%;
+        height: 12.5%;
+        aspect-ratio: 1/1;
         padding: 0;
         position: relative;
         box-sizing: border-box;
@@ -235,7 +236,7 @@ button {
     top: 10%;
     width: 250px;
     height: 400px;
-    background: rgba(0, 0, 0, 0.5); /* Transparante achtergrond */
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     padding: 10px;
     font-family: 'Jaro', sans-serif;
@@ -265,13 +266,13 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Hoogte volledig scherm */
+    height: 100vh;
 }
 .left-top-corner {
     position: absolute;
     top: -40px;
     left: 0;
-    padding: 10px; /* Optioneel: ruimte aan de randen */
+    padding: 10px;
 }
 
 .joingameinput {
@@ -332,7 +333,7 @@ h1 {
     margin-left: 20px;
 }
 .modal-bg {
-    display: none; /* standaard verborgen */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -345,7 +346,7 @@ h1 {
 }
 
     .modal-bg.active {
-        display: flex; /* zichtbaar als active */
+        display: flex;
     }
 
 .modal-content {
@@ -353,4 +354,11 @@ h1 {
     padding: 20px;
     border-radius: 12px;
     text-align: center;
+}
+input,
+textarea,
+select {
+    font-size: 17px;
+    font-family: 'Jaro', sans-serif;
+    color: white;
 }
