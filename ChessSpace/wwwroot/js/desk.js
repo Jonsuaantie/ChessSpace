@@ -8,22 +8,27 @@
     if (screen) {
         screen.addEventListener('click', () => {
             if (container.classList.contains('on')) {
-                window.location.href = screen.dataset.url;
+                const bgImg = document.querySelector('.bg-img');
+
+                bgImg.classList.add('animate');
+
+                setTimeout(() => {
+                    window.location.href = screen.dataset.url;
+                }, 1000);
             }
         });
     }
+
 
     if (button && container && bgWrapper && img) {
         button.addEventListener('click', (e) => {
             e.preventDefault();
 
-            // voorkom dubbel klikken tijdens animatie
             if (container.dataset.animating === 'true') return;
 
             const isOn = container.classList.contains('on');
             const targetSrc = isOn ? "../images/gamingsetupoff.jpg" : "../images/gamingsetupon.jpg";
 
-            // maak overlay
             const overlay = document.createElement('div');
             overlay.className = 'crossfade-overlay';
             overlay.style.backgroundImage = `url("${targetSrc}")`;
@@ -31,20 +36,18 @@
 
             bgWrapper.appendChild(overlay);
 
-            // force reflow zodat transition werkt
             void overlay.offsetWidth;
 
-            // start animatie: fade overlay in
             container.dataset.animating = 'true';
+            container.classList.add('animating'); // <<< animatie staat aan
             overlay.style.opacity = '1';
 
-            // als transition klaar is: swap src en cleanup
             const finish = () => {
-                // guard (in geval van dubbele calls)
                 if (container.dataset.animating !== 'true') return;
-                img.src = targetSrc; // vervang de onderliggende img
+                img.src = targetSrc;
                 overlay.remove();
                 container.dataset.animating = 'false';
+                container.classList.remove('animating'); // <<< animatie klaar
                 container.classList.toggle('on');
             };
 
@@ -56,7 +59,6 @@
             };
             overlay.addEventListener('transitionend', onTransitionEnd);
 
-            // fallback (in geval transitionend niet vuurt)
             setTimeout(() => {
                 if (container.dataset.animating === 'true') finish();
             }, 1000);
