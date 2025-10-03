@@ -25,6 +25,7 @@
     height: auto;
     max-width: 100vw;
     max-height: 100vh;
+    transition: opacity 0.9s ease-in-out;
 }
 
 /* SCREEN HOVER EFFECT */
@@ -47,7 +48,7 @@
 /* SCREEN */
 .screen {
     position: absolute;
-    top: 27.9%; /* percentage t.o.v. de afbeelding */
+    top: 17.9%;
     left: 23.5%;
     width: 51.5%;
     height: 34.2%;
@@ -57,17 +58,14 @@
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-    .screen.zoom {
-        transform: scale(2.5);
-    }
 
 /* ONBUTTON */
 .onbutton {
     position: absolute;
-    top: 63.3%;
+    top: 56.7%;
     left: 73.96%;
     width: 1.8%;
-    height: 3.5%;
+    height: 3.7%;
     cursor: pointer;
     border: 2px solid transparent;
     z-index: 4;
@@ -77,4 +75,16 @@
 /* TURN ON BACKGROUND SWITCH */
 .container.on .bg-img {
     content: url("../images/gamingsetupon.jpg");
+    transition: opacity 0.9s ease-in-out;
+}
+.crossfade-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+    z-index: 2; /* onder .screen (z-index:3) en .onbutton (z-index:4) */
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain; /* gebruik 'cover' als jouw img object-fit: cover gebruikt */
 }
