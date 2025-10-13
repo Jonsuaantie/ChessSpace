@@ -1,4 +1,4 @@
-﻿* {
+﻿/** {
     box-sizing: border-box;
     font-family: 'Segoe UI', Roboto, sans-serif;
 }
@@ -137,3 +137,4 @@ body {
 .coin {
     transition: transform 0.2s;
 }
+*/
