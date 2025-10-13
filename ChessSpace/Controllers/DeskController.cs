@@ -11,5 +11,8 @@ namespace ChessSpace.Controllers {
         public IActionResult Chessspace() {
             return View();
         }
+        public IActionResult StuCenten() {
+            return View();
+        }
     }
 }

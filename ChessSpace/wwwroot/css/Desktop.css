@@ -29,7 +29,7 @@ body {
     top: 8vh;
     left: 4vw;
     display: grid;
-    grid-template-columns: repeat(3, 96px);
+    grid-template-columns: repeat(13, 96px);
     grid-auto-rows: 110px;
     gap: 18px 22px;
 }

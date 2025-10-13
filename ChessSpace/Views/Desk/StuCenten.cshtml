@@ -1,0 +1,70 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StuCenten — Dashboard</title>
+    <link rel="stylesheet" href="~/css/stucenten.css">
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+            <img src="~/images/StuCenten.png" alt="StuCenten logo" class="logo coin" />
+            <h1>Welkom bij StuCenten</h1>
+        </header>
+
+        <main class="main">
+            <section class="panel wallet">
+                <h2>Rekeningen</h2>
+                <div class="balance">Spaarrekening: € 3317,48</div>
+                <div class="balance">Lopende rekening: € 58,42</div>
+            </section>
+
+            <section class="panel goal">
+                <h3>Spaar­doel laptop</h3>
+                <div class="progress-wrap">
+                    <div id="progressBar" class="progress-bar" style="width: 23%;"></div>
+                </div>
+                <div id="goalMeta" class="meta">120 / 517 gespaard</div>
+                <button id="saveNow" class="btn">+ €25 opsparen</button>
+            </section>
+
+            <section class="panel transactions-card">
+                <h3>Transacties</h3>
+                <div id="txList" class="txlist"></div>
+                <button id="addTx" class="btn">Nieuwe transactie</button>
+            </section>
+
+            <section class="panel income-card">
+                <h3>Maandelijkse Inkomsten</h3>
+                <div id="incomeList" class="txlist"></div>
+                <div id="incomeTotal" class="total"></div>
+                <button id="addIncome" class="btn green">Nieuwe inkomsten</button>
+            </section>
+
+            <section class="panel expense-card">
+                <h3>Vaste lasten</h3>
+                <div id="expenseList" class="txlist"></div>
+                <div id="expenseTotal" class="total"></div>
+                <button id="addExpense" class="btn red">Nieuwe uitgave</button>
+            </section>
+
+            <section class="panel budget-card">
+                <h3>Budget & Spaargeld</h3>
+                <div id="budgetDiff" class="balance">Beschikbaar budget: € 0.00</div>
+
+                <label for="customBudget" class="meta">Voer je eigen budget in (€):</label>
+                <input type="number" id="customBudget" class="budget-input" placeholder="Bijv. 200">
+                <button id="saveBudget" class="btn green">Budget opslaan</button>
+
+                <div id="savingsLeft" class="balance">Over als spaargeld: € 0.00</div>
+            </section>
+        </main>
+    </div>
+
+    <script src="~/js/stucenten.js"></script>
+</body>
+</html>
